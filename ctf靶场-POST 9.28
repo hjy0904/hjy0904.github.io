@@ -1,9 +1,9 @@
 **Bugku CTF POST Writeup
-**题目信息
+**题目信息**
     题目：POST
     考点：POST传参
     地址：http://160.202.254.160:19297
-**源码分析
+**源码分析**
     页面给出PHP源码：
     $what=$_POST['what'];
     echo $what;
@@ -11,12 +11,12 @@
     echo 'flag****';
 代码通过POST接收POST请求中名为what的参数。如果传入的what的值是flag，就输出flag。
 直接在浏览器打开网页是GET请求，POST接收不到GET的参数，所以无法拿到flag。
-**解题步骤
+**解题步骤**
 1.使用curl发送POST请求。
 2.按下Win+R，输入cmd，打开命令提示符。
 3.输入命令：curl -X POST -d "what=flag" http://160.202.254.160:19297回车执行。
 服务器收到POST数据，参数what等于flag，触发判断，返回flag。
-**总结:
+**总结:**
 这是一道Web基础题，考察GET和POST的区别。GET参数放在网址后面，POST参数放在请求体里。
 PHP中POST只能接收POST提交的数据，不能用浏览器地址栏直接传参。
 curl可以在命令行快速构造POST请求，是CTF入门常用工具。
